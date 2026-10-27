@@ -5,8 +5,8 @@ const skills = {
   Containers: ["Docker", "Kubernetes", "Helm"],
   IaC: ["Terraform", "Ansible", "CloudFormation"],
   "CI/CD": ["GitHub Actions", "GitLab CI", "Jenkins", "ArgoCD"],
-  Observability: ["Prometheus", "Grafana", "ELK", "Datadog"],
-  Scripting: ["Bash", "Python", "Go"],
+  Observability: ["Prometheus", "Grafana"],
+  Scripting: ["Bash", "Python"],
 };
 
 const shots = [
