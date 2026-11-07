@@ -527,6 +527,13 @@ img {
 
 /* AI Chatbot */
 
+.chatbot {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  z-index: 99999;
+}
+
 .chat-toggle {
   background: #a3e635;
   color: #111;
@@ -535,6 +542,8 @@ img {
   border-radius: 8px;
   cursor: pointer;
   font-weight: bold;
+  position: relative;
+  z-index: 2;
 }
 
 .chat-window {
@@ -543,6 +552,7 @@ img {
   right: 0;
   width: 350px;
   height: 450px;
+  max-width: calc(100vw - 30px);
   background: #111827;
   border: 1px solid #374151;
   border-radius: 10px;
@@ -556,13 +566,18 @@ img {
   display: none !important;
 }
 
-/* Mobile chatbot positioning */
+/* Mobile */
 @media (max-width: 480px) {
-  .chat-toggle {
-    position: fixed;
+  .chatbot {
+    left: 15px;
     right: 15px;
     bottom: 15px;
-    z-index: 99999;
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .chat-toggle {
+    display: block;
   }
 
   .chat-window {
@@ -571,8 +586,8 @@ img {
     right: 15px;
     bottom: 80px;
     width: auto;
-    height: min(420px, 65vh);
+    height: 420px;
+    max-width: none;
     max-height: calc(100vh - 100px);
-    z-index: 99998;
   }
 }
