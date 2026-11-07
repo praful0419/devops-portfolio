@@ -525,13 +525,12 @@ img {
 }
 /* AI Chatbot */
 
-/* AI Chatbot */
-
 .chatbot {
   position: fixed;
-  right: 20px;
-  bottom: 20px;
-  z-index: 99999;
+  bottom: 25px;
+  right: 25px;
+  z-index: 9999;
+  font-family: "JetBrains Mono", monospace;
 }
 
 .chat-toggle {
@@ -542,8 +541,6 @@ img {
   border-radius: 8px;
   cursor: pointer;
   font-weight: bold;
-  position: relative;
-  z-index: 2;
 }
 
 .chat-window {
@@ -552,7 +549,6 @@ img {
   right: 0;
   width: 350px;
   height: 450px;
-  max-width: calc(100vw - 30px);
   background: #111827;
   border: 1px solid #374151;
   border-radius: 10px;
@@ -563,31 +559,78 @@ img {
 }
 
 .hidden {
-  display: none !important;
+  display: none;
 }
 
-/* Mobile */
+.chat-header {
+  padding: 15px;
+  background: #1f2937;
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+}
+
+.chat-header button {
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+.chat-messages {
+  flex: 1;
+  padding: 15px;
+  overflow-y: auto;
+  font-size: 12px;
+}
+
+.bot-message,
+.user-message {
+  padding: 10px;
+  margin-bottom: 12px;
+  border-radius: 6px;
+  line-height: 1.6;
+}
+
+.bot-message {
+  background: #1f2937;
+  color: #a3e635;
+}
+
+.user-message {
+  background: #374151;
+  text-align: right;
+}
+
+.chat-form {
+  display: flex;
+  padding: 10px;
+  gap: 8px;
+}
+
+.chat-form input {
+  flex: 1;
+  min-width: 0;
+  background: #1f2937;
+  border: 1px solid #374151;
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.chat-form button {
+  background: #a3e635;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
 @media (max-width: 480px) {
-  .chatbot {
-    left: 15px;
-    right: 15px;
-    bottom: 15px;
-    display: flex;
-    justify-content: flex-end;
-  }
-
-  .chat-toggle {
-    display: block;
-  }
-
   .chat-window {
-    position: fixed;
-    left: 15px;
-    right: 15px;
-    bottom: 80px;
-    width: auto;
-    height: 420px;
-    max-width: none;
-    max-height: calc(100vh - 100px);
+    width: calc(100vw - 30px);
+    right: -10px;
+    height: 70vh;
   }
 }
