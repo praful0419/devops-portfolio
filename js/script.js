@@ -144,3 +144,86 @@ document.addEventListener("DOMContentLoaded", () => {
   renderExperience();
   renderYear();
 });
+
+// ---------- AI chatbot ----------
+
+document.addEventListener("DOMContentLoaded", () => {
+  const toggle = document.getElementById("chat-toggle");
+  const close = document.getElementById("chat-close");
+  const windowEl = document.getElementById("chat-window");
+  const form = document.getElementById("chat-form");
+  const input = document.getElementById("chat-input");
+  const messages = document.getElementById("chat-messages");
+
+  if (!toggle || !close || !windowEl || !form || !input || !messages) {
+    return;
+  }
+
+  toggle.addEventListener("click", () => {
+    windowEl.classList.toggle("hidden");
+  });
+
+  close.addEventListener("click", () => {
+    windowEl.classList.add("hidden");
+  });
+
+  function addMessage(text, sender) {
+    const message = document.createElement("div");
+    message.className =
+      sender === "user" ? "user-message" : "bot-message";
+
+    // textContent prevents HTML/script injection.
+    message.textContent = text;
+
+    messages.appendChild(message);
+    messages.scrollTop = messages.scrollHeight;
+  }
+
+  
+form.addEventListener("submit", async (event) => {
+  event.preventDefault();
+
+  const question = input.value.trim();
+  if (!question) return;
+
+  addMessage(question, "user");
+  input.value = "";
+
+  const loading = document.createElement("div");
+  loading.className = "bot-message";
+  loading.textContent = "Thinking...";
+  messages.appendChild(loading);
+
+  try {
+    const response = await fetch(
+      "https://portfolio-chatbot.prafulmishra04.workers.dev/",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          message: question,
+        }),
+      }
+    );
+
+    const data = await response.json();
+    loading.remove();
+
+    if (!response.ok) {
+      throw new Error(data.error || "AI request failed");
+    }
+
+    addMessage(data.reply, "bot");
+
+  } catch (error) {
+    loading.remove();
+    console.error("Chatbot error:", error);
+    addMessage(
+      "Sorry, something went wrong. Please try again.",
+      "bot"
+    );
+  }
+});
+});

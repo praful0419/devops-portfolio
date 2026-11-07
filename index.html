@@ -123,10 +123,38 @@
       </section>
     </main>
 
-    <footer class="site-footer">
-      © <span id="year">2026</span> Prafful Mishra · deployed with ♥ and CI/CD
-    </footer>
+   
+<footer class="site-footer">
+  © <span id="year">2026</span> Prafful Mishra · deployed with ♥ and CI/CD
+</footer>
 
-    <script src="js/script.js"></script>
-  </body>
+<!-- AI Chatbot -->
+<div class="chatbot">
+  <button id="chat-toggle" class="chat-toggle">
+    <span>⌘</span> Ask AI
+  </button>
+
+  <div id="chat-window" class="chat-window hidden">
+    <div class="chat-header">
+      <span>prafful@portfolio:~$ ai-assistant</span>
+      <button id="chat-close">×</button>
+    </div>
+
+    <div id="chat-messages" class="chat-messages">
+      <div class="bot-message">
+        Hi! I'm Prafful's AI assistant. Ask me about his skills, projects or experience.
+      </div>
+    </div>
+
+    <form id="chat-form" class="chat-form">
+      <input id="chat-input" type="text"
+        placeholder="Ask something..." autocomplete="off" required>
+      <button type="submit">Send</button>
+    </form>
+  </div>
+</div>
+
+<script src="js/script.js"></script>
+</body>
 </html>
+
